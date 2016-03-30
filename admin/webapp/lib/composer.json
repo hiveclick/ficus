@@ -1,0 +1,15 @@
+{
+	"minimum-stability": "dev",
+    "require": {
+        "knplabs/knp-snappy": "0.3.*",
+		"ioki/wkhtmltopdf-amd64-centos6": "dev-master",
+		"twbs/bootstrap": "^3.3@dev",
+		"oyejorge/less.php": "v1.7.0.10",
+		"zendframework/zend-stdlib": "^2.6",
+		"zendframework/zend-navigation": "^2.5",
+		"zendframework/zend-config": "^2.6",
+		"zendframework/zend-http": "^2.5",
+		"hiveclick/mojavi": "dev-master",
+		"aws/aws-sdk-php": "^3.17"
+    }
+}

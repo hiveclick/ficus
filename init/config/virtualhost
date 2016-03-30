@@ -1,0 +1,126 @@
+<VirtualHost *:80>
+    DocumentRoot /home/ficus/admin/docroot/
+    ServerName www.ficus.dev
+
+    RewriteEngine On
+    RewriteRule ^/css/(.*) /css/$1 [QSA,L]
+    RewriteRule ^/js/(.*) /js/$1 [QSA,L]
+    RewriteRule ^/images/(.*) /images/$1 [QSA,L]
+    RewriteRule ^/img/(.*) /img/$1 [QSA,L]
+    RewriteRule ^/opcache\.php$ /opcache.php [QSA,L]
+    
+    RewriteCond %{REQUEST_URI} !/$
+    RewriteRule ^/([^.]+)/([^.]+)/([a-z0-9]+)$ /index.php?module=$1&action=$2&_id=$3 [L,QSA]
+    RewriteRule ^/([^.]+)/([^.]+)\.(.*)$ /index.php?module=$1&action=$2 [L,QSA]
+    RewriteRule ^/([^.]+)/([^.]+)$ /index.php?module=$1&action=$2 [L,QSA]
+    RewriteRule ^/([^.]+)\.(.*)$ /index.php?module=Default&action=$1 [L,QSA]
+    RewriteRule ^/([^.]+)$ /index.php?module=Default&action=$1 [L,QSA]
+
+    <Directory "/home/ficus/admin/docroot/">
+        Options FollowSymLinks
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+    </Directory>
+    
+</VirtualHost>
+
+<VirtualHost *:80>
+    DocumentRoot /home/ficus/care/docroot/
+    ServerName care.ficus.dev
+
+    RewriteEngine On
+    RewriteRule ^/css/(.*) /css/$1 [QSA,L]
+    RewriteRule ^/js/(.*) /js/$1 [QSA,L]
+    RewriteRule ^/images/(.*) /images/$1 [QSA,L]
+    RewriteRule ^/img/(.*) /img/$1 [QSA,L]
+    RewriteRule ^/opcache\.php$ /opcache.php [QSA,L]
+    
+    RewriteCond %{REQUEST_URI} !/$
+    RewriteRule ^/([^.]+)/([^.]+)/([a-z0-9]+)$ /index.php?module=$1&action=$2&_id=$3 [L,QSA]
+    RewriteRule ^/([^.]+)/([^.]+)\.(.*)$ /index.php?module=$1&action=$2 [L,QSA]
+    RewriteRule ^/([^.]+)/([^.]+)$ /index.php?module=$1&action=$2 [L,QSA]
+    RewriteRule ^/([^.]+)\.(.*)$ /index.php?module=Default&action=$1 [L,QSA]
+    RewriteRule ^/([^.]+)$ /index.php?module=Default&action=$1 [L,QSA]
+
+    <Directory "/home/ficus/provider/docroot/">
+        Options FollowSymLinks
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+    </Directory>
+    
+</VirtualHost>
+
+<VirtualHost *:80>
+    DocumentRoot /home/ficus/provider/docroot/
+    ServerName provider.ficus.dev
+
+    RewriteEngine On
+    RewriteRule ^/css/(.*) /css/$1 [QSA,L]
+    RewriteRule ^/js/(.*) /js/$1 [QSA,L]
+    RewriteRule ^/images/(.*) /images/$1 [QSA,L]
+    RewriteRule ^/img/(.*) /img/$1 [QSA,L]
+    RewriteRule ^/opcache\.php$ /opcache.php [QSA,L]
+    
+    RewriteCond %{REQUEST_URI} !/$
+    RewriteRule ^/([^.]+)/([^.]+)/([a-z0-9]+)$ /index.php?module=$1&action=$2&_id=$3 [L,QSA]
+    RewriteRule ^/([^.]+)/([^.]+)\.(.*)$ /index.php?module=$1&action=$2 [L,QSA]
+    RewriteRule ^/([^.]+)/([^.]+)$ /index.php?module=$1&action=$2 [L,QSA]
+    RewriteRule ^/([^.]+)\.(.*)$ /index.php?module=Default&action=$1 [L,QSA]
+    RewriteRule ^/([^.]+)$ /index.php?module=Default&action=$1 [L,QSA]
+
+    <Directory "/home/ficus/provider/docroot/">
+        Options FollowSymLinks
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+    </Directory>
+    
+</VirtualHost>
+
+<VirtualHost *:80>
+    DocumentRoot /home/ficus/family/docroot/
+    ServerName family.ficus.dev
+
+    RewriteEngine On
+    RewriteRule ^/css/(.*) /css/$1 [QSA,L]
+    RewriteRule ^/js/(.*) /js/$1 [QSA,L]
+    RewriteRule ^/images/(.*) /images/$1 [QSA,L]
+    RewriteRule ^/img/(.*) /img/$1 [QSA,L]
+    RewriteRule ^/opcache\.php$ /opcache.php [QSA,L]
+    
+    RewriteCond %{REQUEST_URI} !/$
+    RewriteRule ^/([^.]+)/([^.]+)/([a-z0-9]+)$ /index.php?module=$1&action=$2&_id=$3 [L,QSA]
+    RewriteRule ^/([^.]+)/([^.]+)\.(.*)$ /index.php?module=$1&action=$2 [L,QSA]
+    RewriteRule ^/([^.]+)/([^.]+)$ /index.php?module=$1&action=$2 [L,QSA]
+    RewriteRule ^/([^.]+)\.(.*)$ /index.php?module=Default&action=$1 [L,QSA]
+    RewriteRule ^/([^.]+)$ /index.php?module=Default&action=$1 [L,QSA]
+
+    <Directory "/home/ficus/family/docroot/">
+        Options FollowSymLinks
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+    </Directory>
+    
+</VirtualHost>
+
+<VirtualHost *:80>
+    DocumentRoot /home/ficus/api/docroot
+    ServerName api.ficus.dev
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} !/$
+    RewriteRule ^/([^.]+)/([^.]+)/([a-z0-9]+)$ /index.php?module=$1&action=$2&_id=$3 [L,QSA]
+    RewriteRule ^/([^.]+)/([^.]+)$ /index.php?module=$1&action=$2 [L,QSA]
+    RewriteRule ^/([^.]+)$ /index.php?module=Default&action=$1 [L,QSA]
+
+    <Directory /home/ficus/api/docroot>
+        Options FollowSymLinks
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+</VirtualHost>
