@@ -78,6 +78,24 @@
                 <class>nav-secondary</class>
                 <permission>1</permission>
             </adl>
+            <icd>
+                <label>ICD-10 Codes</label>
+                <uri>/admin/icd-search</uri>
+                <class>nav-secondary</class>
+                <permission>1</permission>
+            </icd>
+            <facilities>
+                <label>Facilities</label>
+                <uri>/admin/facility-search</uri>
+                <class>nav-secondary</class>
+                <permission>1</permission>
+            </facilities>
+            <medications>
+                <label>Medications</label>
+                <uri>/admin/medicine-search</uri>
+                <class>nav-secondary</class>
+                <permission>1</permission>
+            </medications>
             <spacer>
 				<label></label>
 				<uri></uri>>
@@ -110,7 +128,7 @@
             </company>
             <setting>
                 <label>Global Settings</label>
-                <uri>/admin/preferences</uri>
+                <uri>/admin/settings</uri>
                 <class>nav-secondary</class>
                 <permission>1</permission>
             </setting>

@@ -21,29 +21,29 @@
                 <div class="active tab-pane fade in" id="basic">
             		<div class="help-block">Manage a provider with access to log into the system</div>
             		<div class="form-group">
-            			<label class="control-label hidden-xs" for="name">Name</label>
+            			<label class="control-label" for="name">Name</label>
             			<input type="text" id="name" name="name" class="form-control" placeholder="Enter provider's name" value="<?php echo $provider->getName() ?>" />
             		</div>
             		
             		<hr />
             		
             		<div class="form-group">
-            			<label class="control-label hidden-xs" for="name">Mailing Address</label>
+            			<label class="control-label" for="name">Mailing Address</label>
             			<input type="text" id="address" name="mailing[address]" class="form-control" placeholder="Enter provider's main address" value="<?php echo $provider->getMailing()->getAddress() ?>" />
             		</div>
             		
             		<div class="form-group">
                         <div class="row">
                             <div class="col-md-5">
-                                <label class="control-label hidden-xs" for="name">Mailing City</label>
+                                <label class="control-label" for="name">Mailing City</label>
             			        <input type="text" id="city" name="mailing[city]" class="form-control" placeholder="Enter provider's mailing city" value="<?php echo $provider->getMailing()->getCity() ?>" />    
                             </div>
                             <div class="col-md-3">
-                                <label class="control-label hidden-xs" for="name">Mailing State</label>
+                                <label class="control-label" for="name">Mailing State</label>
                     			<input type="text" id="state" name="mailing[state]" class="form-control" placeholder="Enter provider's mailing state" value="<?php echo $provider->getMailing()->getState() ?>" />
                             </div>
                             <div class="col-md-4">
-                                <label class="control-label hidden-xs" for="name">Mailing Zip</label>
+                                <label class="control-label" for="name">Mailing Zip</label>
             			        <input type="text" id="postal_code" name="mailing[postal_code]" class="form-control" placeholder="Enter provider's mailing zip code" value="<?php echo $provider->getMailing()->getPostalCode() ?>" />
                             </div>
                         </div>
@@ -52,18 +52,18 @@
             		<hr />
             		
             		<div class="form-group">
-            			<label class="control-label hidden-xs" for="name">Primary Email Address</label>
+            			<label class="control-label" for="name">Primary Email Address</label>
             			<input type="text" id="email" name="mailing[email]" class="form-control" placeholder="Enter provider's main email address" value="<?php echo $provider->getMailing()->getEmail() ?>" />
             		</div>
             		
             		<div class="form-group">
-            			<label class="control-label hidden-xs" for="name">Primary Phone Number</label>
+            			<label class="control-label" for="name">Primary Phone Number</label>
             			<input type="text" id="phone" name="mailing[phone]" class="form-control" placeholder="Enter provider's main phone number" value="<?php echo $provider->getMailing()->getPhone() ?>" />
             		</div>
             		
             		<div class="form-group">
                         <div class="row">
-                            <div class="col-md-8"><label class="control-label hidden-xs" for="status_1">Provider Status</label></div>
+                            <div class="col-md-8"><label class="control-label" for="status_1">Provider Status</label></div>
                             <div class="col-md-4 text-right">
                                 <input type="hidden" name="status" value="<?php echo \Ficus\Provider::STATUS_INACTIVE ?>" />
                                 <input type="checkbox" name="status" value="<?php echo \Ficus\Provider::STATUS_ACTIVE ?>" id="status_1" <?php echo $provider->getStatus() == \Ficus\Provider::STATUS_ACTIVE ? 'checked' : '' ?> />

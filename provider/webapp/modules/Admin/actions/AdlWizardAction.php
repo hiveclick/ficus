@@ -22,7 +22,7 @@ class AdlWizardAction extends BasicAction
 	 */
 	public function execute ()
 	{
-		/* @var $user Ficus\Adl */
+		/* @var $adl Ficus\Adl */
 		$adl = new \Ficus\Adl();
 		$adl->populate($_GET);
 		

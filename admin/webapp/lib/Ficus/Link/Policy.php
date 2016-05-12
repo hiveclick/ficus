@@ -3,22 +3,26 @@ namespace Ficus\Link;
 
 class Policy extends BaseLink {
     
+    protected $carrier_id;
+    protected $carrier_name;
+    
     protected $policy_number;
-    protected $carrier;
     protected $member_number;
+    protected $group_number;
+    protected $plan_name;
+    
+    protected $relationship_to_insured;
+    protected $insured_authorization;
+    protected $deductible;
+    protected $copayment;
     
     protected $expiration;
     
-    protected $mda;
-    protected $multiplier;
+    protected $insured_firstname;
+    protected $insured_lastname;
+    protected $insured_middlename;
     
-    protected $benefit;
-    protected $remaining_benefit;
-    
-    protected $has_premium_suspension;
-    protected $has_benefit_reinstatement;
-    protected $benefit_reinstatement_wait;
-    
+        
     /**
      * Returns the policy_number
      * @return string
@@ -41,23 +45,65 @@ class Policy extends BaseLink {
     }
     
     /**
-     * Returns the carrier
+     * Returns the carrier_id
      * @return string
      */
-    function getCarrier() {
-        if (is_null($this->carrier)) {
-            $this->carrier = "";
+    function getCarrierId() {
+        if (is_null($this->carrier_id)) {
+            $this->carrier_id = "";
         }
-        return $this->carrier;
+        return $this->carrier_id;
     }
     
     /**
-     * Sets the carrier
+     * Sets the carrier_id
      * @var string
      */
-    function setCarrier($arg0) {
-        $this->carrier = $arg0;
-        $this->addModifiedColumn("carrier");
+    function setCarrierId($arg0) {
+        $this->carrier_id = $arg0;
+        $this->addModifiedColumn("carrier_id");
+        return $this;
+    }
+    
+    /**
+     * Returns the carrier_name
+     * @return string
+     */
+    function getCarrierName() {
+        if (is_null($this->carrier_name)) {
+            $this->carrier_name = "";
+        }
+        return $this->carrier_name;
+    }
+    
+    /**
+     * Sets the carrier_name
+     * @var string
+     */
+    function setCarrierName($arg0) {
+        $this->carrier_name = $arg0;
+        $this->addModifiedColumn("carrier_name");
+        return $this;
+    }
+    
+    /**
+     * Returns the group_number
+     * @return string
+     */
+    function getGroupNumber() {
+        if (is_null($this->group_number)) {
+            $this->group_number = "";
+        }
+        return $this->group_number;
+    }
+    
+    /**
+     * Sets the group_number
+     * @var string
+     */
+    function setGroupNumber($arg0) {
+        $this->group_number = $arg0;
+        $this->addModifiedColumn("group_number");
         return $this;
     }
     
@@ -83,152 +129,170 @@ class Policy extends BaseLink {
     }
     
     /**
-     * Returns the maximum daily allocation for benefit calculations
+     * Returns the plan_name
+     * @return string
+     */
+    function getPlanName() {
+        if (is_null($this->plan_name)) {
+            $this->plan_name = "";
+        }
+        return $this->plan_name;
+    }
+    
+    /**
+     * Sets the plan_name
+     * @var string
+     */
+    function setPlanName($arg0) {
+        $this->plan_name = $arg0;
+        $this->addModifiedColumn("plan_name");
+        return $this;
+    }
+    
+    /**
+     * Returns the relationship_to_insured
+     * @return string
+     */
+    function getRelationshipToInsured() {
+        if (is_null($this->relationship_to_insured)) {
+            $this->relationship_to_insured = "";
+        }
+        return $this->relationship_to_insured;
+    }
+    
+    /**
+     * Sets the relationship_to_insured
+     * @var string
+     */
+    function setRelationshipToInsured($arg0) {
+        $this->relationship_to_insured = $arg0;
+        $this->addModifiedColumn("relationship_to_insured");
+        return $this;
+    }
+    
+    /**
+     * Returns the insured_authorization
+     * @return string
+     */
+    function getInsuredAuthorization() {
+        if (is_null($this->insured_authorization)) {
+            $this->insured_authorization = false;
+        }
+        return $this->insured_authorization;
+    }
+    
+    /**
+     * Sets the insured_authorization
+     * @var string
+     */
+    function setInsuredAuthorization($arg0) {
+        $this->insured_authorization = (boolean)$arg0;
+        $this->addModifiedColumn("insured_authorization");
+        return $this;
+    }
+    
+    /**
+     * Returns the deductible
      * @return float
      */
-    function getMda() {
-        if (is_null($this->mda)) {
-            $this->mda = 0;
+    function getDeductible() {
+        if (is_null($this->deductible)) {
+            $this->deductible = 0;
         }
-        return $this->mda;
+        return $this->deductible;
     }
     
     /**
-     * Sets the maximum daily allocation for benefit calculations
+     * Sets the deductible
      * @var float
      */
-    function setMda($arg0) {
-        $this->mda = (float)$arg0;
-        $this->addModifiedColumn("mda");
+    function setDeductible($arg0) {
+        $this->deductible = (float)$arg0;
+        $this->addModifiedColumn("deductible");
         return $this;
     }
     
     /**
-     * Returns the multiplier
-     * @return integer
-     */
-    function getMultiplier() {
-        if (is_null($this->multiplier)) {
-            $this->multiplier = 0;
-        }
-        return $this->multiplier;
-    }
-    
-    /**
-     * Sets the multiplier
-     * @var integer
-     */
-    function setMultiplier($arg0) {
-        $this->multiplier = (int)$arg0;
-        $this->addModifiedColumn("multiplier");
-        return $this;
-    }
-    
-    /**
-     * Returns the benefit
+     * Returns the copayment
      * @return float
      */
-    function getBenefit() {
-        if (is_null($this->benefit)) {
-            $this->benefit = 0;
+    function getCopayment() {
+        if (is_null($this->copayment)) {
+            $this->copayment = 0;
         }
-        if ($this->benefit == 0) {
-            $this->benefit = ($this->getMda() * $this->getMultiplier());
-        }
-        return $this->benefit;
+        return $this->copayment;
     }
     
     /**
-     * Sets the benefit
+     * Sets the copayment
      * @var float
      */
-    function setBenefit($arg0) {
-        $this->benefit = (float)$arg0;
-        $this->addModifiedColumn("benefit");
+    function setCopayment($arg0) {
+        $this->copayment = (float)$arg0;
+        $this->addModifiedColumn("copayment");
         return $this;
     }
     
     /**
-     * Returns the remaining_benefit
-     * @return float
+     * Returns the insured_firstname
+     * @return string
      */
-    function getRemainingBenefit() {
-        if (is_null($this->remaining_benefit)) {
-            $this->remaining_benefit = 0;
+    function getInsuredFirstname() {
+        if (is_null($this->insured_firstname)) {
+            $this->insured_firstname = "";
         }
-        return $this->remaining_benefit;
+        return $this->insured_firstname;
     }
     
     /**
-     * Sets the remaining_benefit
-     * @var float
+     * Sets the insured_firstname
+     * @var string
      */
-    function setRemainingBenefit($arg0) {
-        $this->remaining_benefit = (float)$arg0;
-        $this->addModifiedColumn("remaining_benefit");
+    function setInsuredFirstname($arg0) {
+        $this->insured_firstname = $arg0;
+        $this->addModifiedColumn("insured_firstname");
         return $this;
     }
     
     /**
-     * Returns the has_premium_suspension
-     * @return boolean
+     * Returns the insured_lastname
+     * @return string
      */
-    function getHasPremiumSuspension() {
-        if (is_null($this->has_premium_suspension)) {
-            $this->has_premium_suspension = false;
+    function getInsuredLastname() {
+        if (is_null($this->insured_lastname)) {
+            $this->insured_lastname = "";
         }
-        return $this->has_premium_suspension;
+        return $this->insured_lastname;
     }
     
     /**
-     * Sets the has_premium_suspension
-     * @var boolean
+     * Sets the insured_lastname
+     * @var string
      */
-    function setHasPremiumSuspension($arg0) {
-        $this->has_premium_suspension = (boolean)$arg0;
-        $this->addModifiedColumn("has_premium_suspension");
+    function setInsuredLastname($arg0) {
+        $this->insured_lastname = $arg0;
+        $this->addModifiedColumn("insured_lastname");
         return $this;
     }
     
     /**
-     * Returns the has_benefit_reinstatement
-     * @return boolean
+     * Returns the insured_middlename
+     * @return string
      */
-    function getHasBenefitReinstatement() {
-        if (is_null($this->has_benefit_reinstatement)) {
-            $this->has_benefit_reinstatement = false;
+    function getInsuredMiddlename() {
+        if (is_null($this->insured_middlename)) {
+            $this->insured_middlename = "";
         }
-        return $this->has_benefit_reinstatement;
+        return $this->insured_middlename;
     }
     
     /**
-     * Sets the has_benefit_reinstatement
-     * @var boolean
+     * Sets the insured_middlename
+     * @var string
      */
-    function setHasBenefitReinstatement($arg0) {
-        $this->has_benefit_reinstatement = (boolean)$arg0;
-        $this->addModifiedColumn("has_benefit_reinstatement");
+    function setInsuredMiddlename($arg0) {
+        $this->insured_middlename = $arg0;
+        $this->addModifiedColumn("insured_middlename");
         return $this;
     }
-    
-    /**
-     * Returns the benefit_reinstatement_wait
-     * @return integer
-     */
-    function getBenefitReinstatementWait() {
-        if (is_null($this->benefit_reinstatement_wait)) {
-            $this->benefit_reinstatement_wait = 180; // 6 months by default
-        }
-        return $this->benefit_reinstatement_wait;
-    }
-    
-    /**
-     * Sets the benefit_reinstatement_wait
-     * @var integer
-     */
-    function setBenefitReinstatementWait($arg0) {
-        $this->benefit_reinstatement_wait = (int)$arg0;
-        $this->addModifiedColumn("benefit_reinstatement_wait");
-        return $this;
-    }    
 }

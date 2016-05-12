@@ -30,6 +30,9 @@ class Client extends MongoForm {
     
     protected $location;
     protected $pcp;
+    protected $employer;
+    protected $emergency_contact;
+    protected $nok;
     protected $clinical;
     protected $extra;
     
@@ -257,14 +260,14 @@ class Client extends MongoForm {
         if (is_array($arg0)) {
             foreach ($arg0 as $contact) {
                 if (is_array($contact)) {
-                    $new_contact = new \Ficus\Link\Contact();
+                    $new_contact = new \Ficus\Link\EmergencyContact();
                     $new_contact->populate($contact);
                     $this->emergency_contacts[] = $new_contact;
-                } else if ($contact instanceof \Ficus\Link\Contact) {
+                } else if ($contact instanceof \Ficus\Link\EmergencyContact) {
                     $this->emergency_contacts[] = $contact;
                 }
             }
-        } else if ($arg0 instanceof \Ficus\Link\Contact) {
+        } else if ($arg0 instanceof \Ficus\Link\EmergencyContact) {
             $this->emergency_contacts[] = $arg0;
         }
         $this->addModifiedColumn("emergency_contacts");
@@ -333,30 +336,68 @@ class Client extends MongoForm {
         $this->addModifiedColumn("tpa_client_id");
         return $this;
     }
+    
+    /**
+     * Returns the insurance
+     * @return \Ficus\Link\ClientInsurance
+     */
+    function getInsurance() { return $this->getPolicy(); }
+    
+    /**
+     * Sets the policy
+     * @var \Ficus\Link\ClientInsurance
+     */
+    function setInsurance($arg0) { return $this->setPolicy($arg0); }
 
     /**
      * Returns the policy
-     * @return \Ficus\Link\Policy
+     * @return \Ficus\Link\ClientInsurance
      */
     function getPolicy() {
         if (is_null($this->policy)) {
-            $this->policy = new \Ficus\Link\Policy();
+            $this->policy = new \Ficus\Link\ClientInsurance();
         }
         return $this->policy;
     }
     
     /**
      * Sets the policy
-     * @var \Ficus\Link\Policy
+     * @var \Ficus\Link\ClientInsurance
      */
     function setPolicy($arg0) {
         if (is_array($arg0)) {
-            $this->policy = new \Ficus\Link\Policy();
+            $this->policy = new \Ficus\Link\ClientInsurance();
             $this->policy->populate($arg0);
-        } else if ($arg0 instanceof \Ficus\Link\Policy) {
+        } else if ($arg0 instanceof \Ficus\Link\ClientInsurance) {
             $this->policy = $arg0;
         }
         $this->addModifiedColumn("policy");
+        return $this;
+    }
+    
+    /**
+     * Returns the employer
+     * @return \Ficus\Link\Employer
+     */
+    function getEmployer() {
+        if (is_null($this->employer)) {
+            $this->employer = new \Ficus\Link\Employer();
+        }
+        return $this->employer;
+    }
+    
+    /**
+     * Sets the employer
+     * @var \Ficus\Link\Employer
+     */
+    function setEmployer($arg0) {
+        if (is_array($arg0)) {
+            $this->employer = new \Ficus\Link\Employer();
+            $this->employer->populate($arg0);
+        } else if ($arg0 instanceof \Ficus\Link\Employer) {
+            $this->employer = $arg0;
+        }
+        $this->addModifiedColumn("employer");
         return $this;
     }
     

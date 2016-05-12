@@ -1,0 +1,95 @@
+@CHARSET "UTF-8";
+
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700,300);
+$font-family-base: 'Raleway', sans-serif;
+
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "../../bower_components/font-awesome/scss/font-awesome.scss";
+
+@font-face {
+    font-family: appleLogo;
+    src: local("Lucida Grande");
+    unicode-range: U + F8FF
+}
+
+body {
+	font-family: LatoWebLight, appleLogo, sans-serif;
+    font-variant-ligatures: common-ligatures;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #555459;
+    line-height: 1.5rem;
+}
+
+.loginbox {
+	background: rgba(245, 245, 245, .4);
+}
+
+.loginbox .panel-heading {
+	background: rgba(245, 245, 245, .6);
+	color: #455964;
+}
+
+.loginbox input.btn:hover {
+	box-shadow: 0px 0px 25px #c3c9ce;
+}
+
+#ficus_logo{margin:1rem;width:384px;height:64px;background:url(/img/logo.png) no-repeat;background-size:contain}
+
+@font-face{font-family:appleLogo;src:local("Lucida Grande");unicode-range:U+F8FF}
+.fs_split{background-color:#fff;position:absolute;overflow:hidden;top:0;bottom:0;left:0;right:0}
+.fs_split h1{font-size:42px;line-height:3pc;font-weight:300;margin-bottom:2rem}
+.fs_split label{margin-bottom:.5rem}
+.fs_split .desc{font-size:1.25rem;color:#9e9ea6;margin-bottom:2rem}
+.fs_split #ficus_logo{margin:1rem;width:384px;height:64px;background:url(/img/logo.png) no-repeat;background-size:contain}
+.fs_split .header_error_message{margin:0 11%;padding:1rem 2rem;background:#fff1e1;border:none;border-left:.5rem solid #ffa940;border-radius:.25rem}
+.fs_split .header_error_message h3{margin:0}
+.fs_split .error_message{display:none;font-weight:700;color:#ffa940}
+.fs_split .error input,.fs_split .error textarea{border:1px solid #ffa940;background:#fff1e1}
+.fs_split .error input:focus,.fs_split .error textarea:focus{border-color:#fff1e1;box-shadow:0 0 7px rgba(255,185,100,.15)}
+.fs_split .error .error_message{display:inline}
+.fs_split .fs_split_pane{height:100%;-webkit-transition:background-color .2s ease-out 0s;-moz-transition:background-color .2s ease-out 0s;transition:background-color .2s ease-out 0s}
+.fs_split .fs_split_pane .fs_split_flex_wrapper{position:relative;min-height:100%;font-size:1rem;display:-webkit-flex;display:-ms-flexbox;display:flex;-ms-flex-direction:column;-webkit-flex-direction:column;flex-direction:column;-ms-flex-pack:justify;-webkit-justify-content:space-between;justify-content:space-between}
+.fs_split .fs_split_pane .fs_split_flex_wrapper .fs_split_mini_header{-ms-flex-item-align:start;-webkit-align-self:flex-start;align-self:flex-start;display:none}
+.fs_split .fs_split_pane .fs_split_flex_wrapper .fs_split_header{-ms-flex-item-align:start;-webkit-align-self:flex-start;align-self:flex-start;width:100%;padding:1rem}
+.fs_split .fs_split_pane .fs_split_flex_wrapper .fs_split_body{padding:0 12%;position:relative;-ms-flex-item-align:center;-webkit-align-self:center;align-self:center;max-width:100%}
+.fs_split .fs_split_pane .fs_split_flex_wrapper .fs_split_body .fs_split_graphics{position:absolute;height:100%;width:76%;background-position:50%;background-repeat:no-repeat;background-size:contain;-webkit-transition:height .5s ease-out 0s;-moz-transition:height .5s ease-out 0s;transition:height .5s ease-out 0s}
+.fs_split .fs_split_pane .fs_split_flex_wrapper .fs_split_footer{padding:.5rem 12%;margin:0 auto;text-align:center;-webkit-align-self:flex-end;align-self:flex-end;max-width:100%}
+.fs_split .fs_split_pane .fs_split_flex_wrapper .fs_split_well{padding:.8rem;max-width:initial;font-size:.8rem;line-height:1.2rem;color:#434245;background-color:#f2f2f5;border-radius:.25rem;order:1}
+.fs_split .fs_split_pane .fs_split_flex_wrapper .fs_split_well a{color:#434245;font-weight:400}
+.fs_split .fs_split_pane .fs_split_flex_wrapper .fs_split_footer:last-of-type{padding-bottom:2rem}
+.fs_split_pane_left{background-color:#fff;color:#434245;width:50%;min-width:486px;max-width:39pc;float:left;z-index:1;overflow-y:auto;word-wrap:break-word}
+.fs_split_pane_left>*{flex:0 0 auto}
+.fs_split_pane_left .fs_split_header{text-align:left}
+.fs_split_pane_left .fs_split_body{width:100%}
+.fs_split_pane_right{background-color:#e8e8e8;width:auto;overflow:hidden}
+.fs_split_pane_right .fs_split_flex_wrapper{max-width:750px;margin:auto}
+.fs_split_pane_right .fs_split_header{text-align:right}
+.fs_split_pane_right .fs_split_body{width:100%;-ms-flex:1;-webkit-flex:1;flex:1}
+.modal-backdrop{background:#000}
+#generic_dialog{max-width:500px;top:20%}
+#generic_dialog .modal-body{padding:2rem 2rem 0rem}
+#generic_dialog .modal-body h1{font-size:36px;line-height:39px;font-weight:300;margin-bottom:1rem}
+#generic_dialog .modal-body p{color:#9e9ea6}
+#generic_dialog .modal-footer a{height:52px;padding:1rem;font-size:1rem}
+#generic_dialog .modal-footer .dialog_go{line-height:1rem}
+#generic_dialog .modal-footer .dialog_go .ts_icon_arrow_right{opacity:.7;font-size:1.5rem;vertical-align:middle;margin:0}
+@media only screen and (max-height:42rem) and (min-width:767px){.fs_split{display:table;overflow:scroll}
+.fs_split .fs_split_pane{display:table-cell;vertical-align:top;overflow:hidden!important}
+.fs_split .fs_split_pane_right{width:100%}
+.fs_split .fs_split_pane_right .fs_split_flex_wrapper{height:100%}
+.fs_split .fs_split_pane_left{height:auto;min-height:100%}
+}
+@media only screen and (max-width:767px){.fs_split .fs_split_pane h1{font-size:36px}
+.fs_split .fs_split_pane .fs_split_flex_wrapper{display:block;max-height:initial;max-width:420px;margin:auto}
+.fs_split .fs_split_pane .fs_split_flex_wrapper .fs_split_body{padding:0 1rem 3rem}
+.fs_split .fs_split_pane .fs_split_flex_wrapper .fs_split_mini_header{display:block}
+.fs_split .fs_split_pane .fs_split_flex_wrapper .fs_split_footer{padding:.5rem 1rem}
+.fs_split .fs_split_pane_left{width:100%;min-width:initial;max-width:initial;overflow:scroll}
+.fs_split .fs_split_pane_right{display:none}
+#generic_dialog{margin:0!important;width:75%;left:12.5%;right:12.5%;bottom:initial}
+#generic_dialog .modal-footer a{width:100%;margin:.5rem 0!important}
+}
+@media only screen and (max-width:414px){#generic_dialog{margin:0!important;width:100%;border-radius:0;top:10%;left:0;right:0}
+#generic_dialog .modal-footer{border-radius:0}
+}

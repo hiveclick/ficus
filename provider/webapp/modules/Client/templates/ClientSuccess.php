@@ -146,36 +146,38 @@
                             <div class="col-md-4 col-sm-6 col-xs-12">
                                 <div class="small-box bg-aqua">
                                     <div class="inner">
-                                        <h3>$<?php echo number_format($client->getPolicy()->getMda(), 2, null, ',') ?></h3>
-                                        <p>Maximum amount that can be billed each day in services</p>
-                                        <div class="icon"><i class="fa fa-user-md"></i></div>
+                                        <h3>$<?php echo number_format($client->getPolicy()->getPrimaryInsurance()->getDeductible(), 2, null, ',') ?></h3>
+                                        <p>Maximum amount the patient is responsible for</p>
+                                        <div class="icon"><i class="fa fa-usd"></i></div>
                                     </div>
-                                    <div class="small-box-footer">Maximum Daily Benefit</div>
+                                    <div class="small-box-footer">Deductible</div>
                                 </div><!-- /.small-box -->
                             </div><!-- /.col -->
                             <div class="col-md-4 col-sm-6 col-xs-12">
                                 <div class="small-box bg-yellow">
                                     <div class="inner">
-                                        <h3><?php echo $client->getPolicy()->getMultiplier() ?>x</h3>
-                                        <p>Maximum number of days you can be on claim</p>
+                                        <h3>$<?php echo number_format($client->getPolicy()->getPrimaryInsurance()->getCopayment(), 2, null, ',') ?></h3>
+                                        <p>Amount the client should pay at time of care</p>
                                         <div class="icon"><i class="fa fa-calendar"></i></div>
                                     </div>
-                                    <div class="small-box-footer">Multiplier</div>
+                                    <div class="small-box-footer">Copayment</div>
                                 </div><!-- /.small-box -->
                             </div><!-- /.col -->
                             <div class="col-md-4 col-sm-6 col-xs-12">
                                 <div class="small-box bg-green">
                                     <div class="inner">
-                                        <h3>$<?php echo number_format($client->getPolicy()->getBenefit(), 2, null, ',') ?></h3>
-                                        <p>Maximum amount the insurer will pay out in services rendered</p>
-                                        <div class="icon"><i class="fa fa-usd"></i></div>
+                                        <h3><?php echo $client->getPolicy()->getPrimaryInsurance()->getPlanName() != '' ? $client->getPolicy()->getPrimaryInsurance()->getPlanName() : 'Plan Name' ?></h3>
+                                        <p>Name and type of plan the client has subscribed to</p>
+                                        <div class="icon"><i class="fa fa-user-md"></i></div>
                                     </div>
-                                    <div class="small-box-footer">Maximum Benefit Amount</div>
+                                    <div class="small-box-footer">Plan Name</div>
                                 </div><!-- /.small-box -->
                             </div><!-- /.col -->
                         </div><!-- /.row -->
                         <hr />
-                        <h3>Insurance</h3>
+                        <div class="pull-right"><a href="/client/client-insurance-wizard?_id=<?php echo $client->getId() ?>" data-toggle="modal" data-target="#edit_client_insurance_modal" class="btn btn-sm btn-primary btn-block"><b>Edit Insurance</b></a></div>
+                        <h3>Primary Insurance</h3>
+                        
                         <div class="row">
                             <div class="col-md-6">
                                 <p><b><?php echo $client->getName() ?></b></p>
@@ -183,9 +185,35 @@
                                 <p><?php echo $client->getMailing()->getCity() ?>, <?php echo $client->getMailing()->getState() ?>, <?php echo $client->getMailing()->getPostalCode() ?></p>
                             </div>
                             <div class="col-md-6 text-right">
-                                <p>Insurer: <?php echo $client->getInsurer() ?></p>
-                                <p>Policy #: <?php echo $client->getPolicyNumber() ?></p>
-                                <p>TPA Client #: <?php echo $client->getTpaClientId() ?></p>
+                                <p>Group #: <?php echo $client->getInsurance()->getPrimaryInsurance()->getGroupNumber() ?></p>
+                                <p>Policy #: <?php echo $client->getInsurance()->getPrimaryInsurance()->getPolicyNumber() ?></p>
+                            </div>
+                        </div>
+                        <h3>Secondary Insurance</h3>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><b><?php echo $client->getName() ?></b></p>
+                                <p><?php echo $client->getMailing()->getAddress() ?></p>
+                                <p><?php echo $client->getMailing()->getCity() ?>, <?php echo $client->getMailing()->getState() ?>, <?php echo $client->getMailing()->getPostalCode() ?></p>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <p>Group #: <?php echo $client->getInsurance()->getSecondaryInsurance()->getGroupNumber() ?></p>
+                                <p>Policy #: <?php echo $client->getInsurance()->getSecondaryInsurance()->getPolicyNumber() ?></p>
+                            </div>
+                        </div>
+                        
+                        <h3>Tertiary Insurance</h3>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><b><?php echo $client->getName() ?></b></p>
+                                <p><?php echo $client->getMailing()->getAddress() ?></p>
+                                <p><?php echo $client->getMailing()->getCity() ?>, <?php echo $client->getMailing()->getState() ?>, <?php echo $client->getMailing()->getPostalCode() ?></p>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <p>Group #: <?php echo $client->getInsurance()->getTertiaryInsurance()->getGroupNumber() ?></p>
+                                <p>Policy #: <?php echo $client->getInsurance()->getTertiaryInsurance()->getPolicyNumber() ?></p>
                             </div>
                         </div>
                         <hr />
@@ -262,6 +290,8 @@
 
 <!-- edit client modal -->
 <div class="modal fade" id="edit_client_modal"><div class="modal-dialog modal-lg"><div class="modal-content"></div></div></div>
+<!-- edit client insurance modal -->
+<div class="modal fade" id="edit_client_insurance_modal"><div class="modal-dialog modal-lg"><div class="modal-content"></div></div></div>
 <!-- edit client image modal -->
 <div class="modal fade" id="edit_client_image_modal"><div class="modal-dialog"><div class="modal-content"></div></div></div>
 <!-- edit client modal -->

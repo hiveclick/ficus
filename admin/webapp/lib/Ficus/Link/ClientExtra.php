@@ -7,6 +7,9 @@ class ClientExtra extends BaseLink {
     protected $wedding_anniversary;
     protected $occupation;
     protected $pet_notes;
+    protected $religion;
+    protected $race;
+    protected $preferred_language;
     
     /**
      * Returns the hobbies
@@ -96,5 +99,70 @@ class ClientExtra extends BaseLink {
         $this->pet_notes = $arg0;
         $this->addModifiedColumn("pet_notes");
         return $this;
-    }    
+    }
+    
+    /**
+     * Returns the race
+     * @return string
+     */
+    function getRace() {
+        if (is_null($this->race)) {
+            $this->race = "caucasian";
+        }
+        return $this->race;
+    }
+    
+    /**
+     * Sets the race
+     * @var string
+     */
+    function setRace($arg0) {
+        $this->race = $arg0;
+        $this->addModifiedColumn("race");
+        return $this;
+    }
+    
+    /**
+     * Returns the religion
+     * @return string
+     */
+    function getReligion() {
+        if (is_null($this->religion)) {
+            $this->religion = "Christianity";
+        }
+        return $this->religion;
+    }
+    
+    /**
+     * Sets the religion
+     * @var string
+     */
+    function setReligion($arg0) {
+        $this->religion = $arg0;
+        $this->addModifiedColumn("religion");
+        return $this;
+    }
+    
+    /**
+     * Returns the preferred_language
+     * @return string
+     */
+    function getPreferredLanguage() {
+        if (is_null($this->preferred_language)) {
+            $this->preferred_language = "english";
+        }
+        return $this->preferred_language;
+    }
+    
+    /**
+     * Sets the preferred_language
+     * @var string
+     */
+    function setPreferredLanguage($arg0) {
+        $this->preferred_language = $arg0;
+        $this->addModifiedColumn("preferred_language");
+        return $this;
+    }
+    
+    
 }

@@ -2,7 +2,7 @@
 namespace Ficus\Link;
 
 class Contact extends BaseLink {
-    
+        
     protected $address;
     protected $address2;
     protected $city;
@@ -32,6 +32,7 @@ class Contact extends BaseLink {
      */
     function setAddress($arg0) {
         $this->address = $arg0;
+        if ($arg0 != $this->address) { $this->addModifiedColumn("address"); }
         return $this;
     }
     
@@ -52,6 +53,7 @@ class Contact extends BaseLink {
      */
     function setAddress2($arg0) {
         $this->address2 = $arg0;
+        if ($arg0 != $this->address2) { $this->addModifiedColumn("address2"); }
         return $this;
     }
     
@@ -72,6 +74,7 @@ class Contact extends BaseLink {
      */
     function setCity($arg0) {
         $this->city = $arg0;
+        if ($arg0 != $this->city) { $this->addModifiedColumn("city"); }
         return $this;
     }
     
@@ -92,6 +95,7 @@ class Contact extends BaseLink {
      */
     function setState($arg0) {
         $this->state = $arg0;
+        if ($arg0 != $this->state) { $this->addModifiedColumn("state"); }
         return $this;
     }
     
@@ -112,6 +116,7 @@ class Contact extends BaseLink {
      */
     function setPostalCode($arg0) {
         $this->postal_code = $arg0;
+        if ($arg0 != $this->postal_code) { $this->addModifiedColumn("postal_code"); }
         return $this;
     }
     
@@ -132,6 +137,7 @@ class Contact extends BaseLink {
      */
     function setCountry($arg0) {
         $this->country = $arg0;
+        if ($arg0 != $this->country) { $this->addModifiedColumn("country"); }
         return $this;
     }
     
@@ -152,6 +158,7 @@ class Contact extends BaseLink {
      */
     function setPhone($arg0) {
         $this->phone = $arg0;
+        if ($arg0 != $this->phone) { $this->addModifiedColumn("phone"); }
         return $this;
     }
     
@@ -172,7 +179,7 @@ class Contact extends BaseLink {
      */
     function setMobile($arg0) {
         $this->mobile = $arg0;
-        $this->addModifiedColumn("mobile");
+        if ($arg0 != $this->mobile) { $this->addModifiedColumn("mobile"); }
         return $this;
     }
     
@@ -193,6 +200,7 @@ class Contact extends BaseLink {
      */
     function setEmail($arg0) {
         $this->email = $arg0;
+        if ($arg0 != $this->email) { $this->addModifiedColumn("email"); }
         return $this;
     }    
 }

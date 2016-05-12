@@ -6,7 +6,7 @@
 <!-- Content Header (Page header) -->
 <div class="content-header">
 	<h1>Manage Staff
-		<small>Staffs have access to log into the system and make changes</small>
+		<small>Staff members have access to log into the system and make changes</small>
 	</h1>
 	<ol class="breadcrumb">
 		<li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -33,6 +33,8 @@
                                     echo "General User";
                                 } else if ($staff->getStaffType() == \Ficus\Staff::STAFF_TYPE_BILLING) {
                                     echo "Billing";
+                                } else if ($staff->getStaffType() == \Ficus\Staff::STAFF_TYPE_MANAGER) {
+                                    echo "House Manager";
                                 } else {
                                     echo "Unknown Type (" . $staff->getStaffType() . ")";
                                 }
@@ -59,16 +61,21 @@
                 <div class="box-body">
                     <strong><i class="fa fa-book margin-r-5"></i>  Education</strong>
                     <p class="text-muted">
-                        
+                        <?php echo $staff->getEducation() ?>
                     </p>
                     <hr>
                     <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
                     <p class="text-muted"><?php echo $staff->getMailing()->getCity() ?>, <?php echo $staff->getMailing()->getState() ?></p>
                     <hr>
                     <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
-                    
+                    <p class="text-muted">
+                        <?php echo $staff->getSkills() ?>
+                    </p>
                     <hr>
                     <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+                    <p class="text-muted">
+                        <?php echo $staff->getNotes() ?>
+                    </p>
                     
                     
                 </div><!-- /.box-body -->

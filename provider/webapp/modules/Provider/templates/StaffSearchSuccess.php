@@ -69,6 +69,8 @@ $(document).ready(function() {
 			    return "General User";
 			} else if (value == "<?php echo \Ficus\Staff::STAFF_TYPE_BILLING ?>") {
 			    return "Billing";
+			} else if (value == "<?php echo \Ficus\Staff::STAFF_TYPE_MANAGER ?>") {
+			    return "House Manager";
 			} else {
 			    return "Unknown Type (" + value + ")";
 			}

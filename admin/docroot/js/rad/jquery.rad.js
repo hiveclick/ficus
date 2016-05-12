@@ -1,11 +1,42 @@
 /**
- * jquery.rad.js
+ * JQuery extensions that were originally used in the RAD platform.  Regardless, these extensions
+ * are pretty radical and can do a lot.
  * @author Mark Hobson
+ * 
+ * $.rad.ajax
+ * 	- Alternates: $.rad.get, $.rad.post, $rad.put, $rad.del
+ *  - Usage:
+ *  	$.rad.get(url, data, callback, dataType, options);
+ *  	or
+ *  	$.rad.ajax(options);
+ *  - Options are:
+ *  	url:		Url to send data to
+ *  	data:		Serialized data to send
+ *  	type:		Type of request (defaults to json)
+ *  	success:	OnSuccess function to call when request is complete
+ *  	check_response:	Checks that response is valid json or xml otherwise throws an error
+ *  	indicator:	Ajax indicator to use when sending/receiving request.  Object containing the start: {} and stop: {} methods
+ *  
+ *  $.rad.notify
+ *   - Usage:
+ *   	$.rad.notify('Success', 'Your message was successful');
+ *   	$.rad.notify.error('Error', 'This will be styled red');
+ *   - Uses the pnotify plugin or alert (as a fallback)
+ *  	
+ *  $.rad.form
+ *  Changes a HTML <form> into an ajax ready form
+ *   - Usage
+ *   	$('form').form(callback, options);
+ *   - Options are:
+ *   	keep_form:	Boolean for whether to reset the form upon submission
+ *   	prepare:	Boolean function to prepare the form for submission or runs validations
+ *   	onsuccess:	OnSuccess function to call when the form is done (or use callback shorthand above)
+ *   	onerror:	Override the default OnError function
+ *   	indicator:	Ajax indicator to use when sending/receiving request.  Object containing the start: {} and stop: {} methods.  Passed to internal $.rad.ajax
+ *   
  */
 
-(function($) {
-//	var notifier = null;
-	
+(function($) {	
 	var httpData = $.httpData || function( xhr, type, s ) { // lifted from jq1.4.4       
 		var ct = xhr.getResponseHeader("content-type"),
 		xml = type == "xml" || !type && ct && ct.indexOf("xml") >= 0,
@@ -33,7 +64,10 @@
 	}
 	
 	/*****************************************************************
-	 * rad plugins
+	 * Extends the jQuery $ with functions
+	 * - $.serializeObject(): Returns a serialized object
+	 * - $.form(): Attaches the $.rad.form functions to the object
+	 * - $.error(): Displays an error through the notify plugin
 	 *****************************************************************
 	 */
 	$.fn.extend({
@@ -78,7 +112,15 @@
 	});
 	
 	/*****************************************************************
-	 * rad library
+	 * Creates the prototype for the $.rad functions
+	 * - $.rad.ajax: Sets options an attaches to $.ajax
+	 * - $.rad.get: Shortcut for $.rad.ajax.get
+	 * - $.rad.post: Shortcut for $.rad.ajax.post
+	 * - $.rad.put: Shortcut for $.rad.ajax.put
+	 * - $.rad.del: Shortcut for $.rad.ajax.del
+	 * - $.rad.form: Attaches ajax form methods to a <form> instnce
+	 * - $.rad.notify: Handles displaying notifications
+	 * - $.rad.serializeForm: Used to serialize a form for submission
 	 *****************************************************************
 	 */
 	$.extend({
@@ -86,7 +128,7 @@
 			ajax: function(options) {
 				options = $.extend(true, {}, this.ajax.options.defaults, options || {});
 				options['data'] = this.ajax.data(options['data']);
-				
+
 				if(options['global'] && $.isFunction(options['success'])) {
 					// move success callback so that global success callback is called first
 					options['onsuccess'] = options['success'];
@@ -96,7 +138,7 @@
 				if(options['type'] == 'DELETE') {
 					options['url'] += ('?' + options['data']);
 				}
-
+				this.ajax.setup(options);
 				var xhr = null;
 				try {
 					xhr = $.ajax(options);
@@ -120,20 +162,16 @@
 				return xhr;
 			},
 			get: function(url, data, callback, dataType, options) {
-				if (options) {
-					this.ajax.setup(options);
-					return this.ajax.get(url, data, callback, dataType);
-				}
-				return this.ajax.get(url, data, callback, dataType);
+				return this.ajax(options).get(url, data, callback, dataType);
 			},
-			post: function(url, data, callback, dataType) {
-				return this.ajax.post(url, data, callback, dataType);
+			post: function(url, data, callback, dataType, options) {
+				return this.ajax(options).post(url, data, callback, dataType);
 			},
-			put: function(url, data, callback, dataType) {
-				return this.ajax.put(url, data, callback, dataType);
+			put: function(url, data, callback, dataType, options) {
+				return this.ajax(options).put(url, data, callback, dataType);
 			},
-			del: function(url, data, callback, dataType) {
-				return this.ajax.del(url, data, callback, dataType);
+			del: function(url, data, callback, dataType, options) {
+				return this.ajax(options).del(url, data, callback, dataType);
 			},
 			notify: function(title, message, type, options) {				
 				if(title == null && message == null) {
@@ -185,7 +223,7 @@
 			}
 		}
 	});
-		
+			
 	/*****************************************************************
 	 * rad notifier
 	 *****************************************************************
@@ -234,6 +272,9 @@
 			}
 		},
 		getNotifier: function(options) {
+			if (options && options['notifier']) {
+				return options['notifier'];
+			}
 			if(this._notifier == null) {
 				this.setup(options);
 			}
@@ -256,15 +297,10 @@
 		}
 	});
 		
-	$.rad.notify.defaults = {
-		type: 'pnotify',
-		settings: {  }
-	};
-		
 	/*****************************************************************
-	 * notifier plugins
-	 *****************************************************************
-	 */
+	 * Extends the _abstract notifier for additional plugins
+	 * Currently supports the alert plugin and pnotify plugin
+	 *****************************************************************/
 	
 	/*
 	 * javascript alert plugin
@@ -355,11 +391,19 @@
 		}
 	});
 	
+	$.rad.notify.defaults = {
+		type: 'pnotify',
+		settings: {  }
+	};
+	
 	
 	/*****************************************************************
-	 * rad ajax handler
-	 *****************************************************************
-	 */
+	 * Rad Ajax Handler
+	 * Wrapper for $.ajax that adds in code for
+	 * 	- error handling
+	 * 	- ajax indicators
+	 * 	- check response for validity
+	 *****************************************************************/
 	$.extend($.rad.ajax, {
 		_queue: [],
 		setup: function(options) {
@@ -377,9 +421,7 @@
 					_this.error(event, XMLHttpRequest, ajaxOptions, thrownError);
 				})
 				.ajaxStart(function() {
-					if($.rad.ajax.options['show_indicator'] == true) {
-						_this.getIndicator().start();
-					}
+					_this.getIndicator().start();
 				})
 				.ajaxStop(function() {
 					_this.getIndicator().stop();
@@ -490,23 +532,6 @@
 						console.log(responseText);
 					}
 					break;
-//				case 401:
-//					this.abortAll();
-//					title = 'Login Required';
-//					sticky = true;
-//					message = '<div id="login_form_container"></div>';
-//					
-//					var url = this.options['login_form'];
-//					if(url != false) {
-//						callback = function() {
-//							var $form = $('#login_form_container');
-//							$form.load(url, function(responseText, textStatus, XMLHttpRequest) {
-//								$('input[name="referrer"]', $form).val(location.pathname);
-//							});
-//						};
-//					}
-//					
-//					break;
 				case 530:
 				case 403:
 					title = 'Access Denied';
@@ -568,10 +593,6 @@
 								throw new Error('invalid response');
 							}
 					}
-					
-					/* data['entries'] = data['entries'] || [];
-					data['record'] = data['record'] || [];
-					data['html'] = data['html'] || ''; */
 				}
 				
 				// execute onsuccess callback
@@ -606,13 +627,21 @@
 			}
 		},
 		getIndicator: function() {
-			var notifier = $.rad.notify.getNotifier();
-			return notifier.ajaxIndicator;
+			if (this.options['indicator']) {
+				return this.options['indicator'];
+			} else {
+				var notifier = $.rad.notify.getNotifier();
+				return notifier.ajaxIndicator;
+			}
 		}
 	});
 	
+	/*
+	 * Define $.rad.ajax defaults
+	 * These are set because defaults[global] = true
+	 */
+	
 	$.rad.ajax.options = {
-		show_indicator: true,
 		check_response: true,
 		login_form: false,
 		defaults: {
@@ -665,7 +694,6 @@
 	$.rad.form.prototype = {
 		_form: null,
 		_options: null,
-		_validator: null,
 		setup: function(options) {
 			var _this = this;			
 			this.setOptions(options);
@@ -688,17 +716,15 @@
 			return this;
 		},
 		validate: function() {
+			if($.isFunction(this._options['validate'])) {
+				return this._options['validate']();
+			}
 			if(this._options['validate'] != true) {
 				return true;
 			}
 			return true;
-			/* Removed validation library so that validation can be done manually */
-//			var validator = this.getValidator();
-//			validator.reset();
-//			return validator.validateAll();
 		},
 		reset: function() {
-			//this.getValidator().reset();
 			$('input[type="text"], textarea', this._form).val('');
 			$('input[type="checkbox"]', this._form).removeAttr('selected').change();
 			$('input[type="checkbox"].select-all', this._form).attr('selected', true).change();
@@ -724,6 +750,9 @@
 			
 			// If we are uploading files, we have to process the form differently
 			if ($('input:file', $form).length > 0) {
+				if (this._options['indicator']) {
+					this._options['indicator'].start();
+				}
 				var t = new Date().getTime();
 				var iframe_id = 'jqiFrame' + t;
 				var $iframe = $('<iframe />').attr({
@@ -741,11 +770,27 @@
 					$buttons.attr('disabled', false);
 					//* form submission is complete,,
 					var response = $iframe.contents().find('pre').html();
-					var data = $.parseJSON(response);
+					if (response !== undefined) {
+						try {
+							var data = $.parseJSON(response);
+						} catch (e) {
+							var data = {result:'error', error: response};
+							console.log("Received invalid JSON")
+							console.log(response);
+						}
+					} else {
+						console.log('Empty response from server, check that there is a template defined');
+						console.log($iframe);
+						var data = {result:'error', errors: ['Empty response from server, check that there is a template defined.']};
+					}
 
 					setTimeout(function() {
 						$iframe.remove();
 					}, 100);
+					
+					if (_this._options['indicator']) {
+						_this._options['indicator'].stop();
+					}
 					
 					if(!data) { return true; }
 					// Check for errors in the response
@@ -784,8 +829,6 @@
 			// Either reset the entire form or just the validation errors;
 			if (this._options['keep_form'] === false) {
 				this.reset();
-			} else {
-				//this.getValidator().reset();
 			}
 			
 			if ($.isFunction(this._options['onsuccess'])) {
@@ -810,34 +853,11 @@
 			if ($.isFunction(this._options['onerror'])) {
 				this._options['onerror'](data, textStatus, xhr);
 			}
-		},
-		getValidator: function() {
-			if(this._validator == null) {
-				var _this = this;
-				
-				this._validator = new validator(this._form, {
-					onSubmit: false, 
-					errorHandler: function(formElement, errors) {
-						var error = this.humanize_name(formElement) + ' ' + errors.message.join(', ');
-						if (formElement.length > 0 && formElement.attr('type') != 'hidden') {
-							formElement.error(error);
-						} else {
-							$.rad.notify.error('Validation Error', error || '');
-						}
-					}, 
-					onSubmitFinish: function(valid) {
-						return !valid;
-					}
-				});
-			}
-			
-			return this._validator;
 		}
 	};
 	
 	$.rad.form.defaults = {
-		keep_form: false,
-		validate: true,
+		keep_form: true,
 		onsuccess: function(data, textStatus, xhr) {
 			$.rad.notify('Your request was submitted successfully', 'Your request has been submitted successfully.  You may need to refresh this page to see your changes.');
 		}

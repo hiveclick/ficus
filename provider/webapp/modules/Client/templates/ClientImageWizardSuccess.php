@@ -12,7 +12,7 @@
 		<div class="help-block">Upload a picture for this client</div>
 		<div class="form-group">
             <img src="<?php echo $client->getProfileImageUrl() ?>" border="0" id="preview" class="profile-user-img img-responsive img-circle" />
-			<label class="control-label hidden-xs" for="picture">Picture</label>
+			<label class="control-label" for="picture">Picture</label>
 			<input type="file" name="picture" accept="image/*" id="picture" capture="camera">
 		</div>
 	</div>

@@ -26,10 +26,13 @@ class ClientWizardAction extends BasicAction
 		$client = new \Ficus\Client();
 		$client->populate($_GET);
 		
-		if (\MongoId::isValid($client->getId())) {
-			$client->query();	
-		}
+		/* @var $icd \Ficus\Icd */
+		$icd = new \Ficus\Icd();
+		$icd->setIgnorePagination(true);
+		$icd->setShowApprovedOnly(true);
+		$icd_codes = $icd->queryAll();
 		
+		$this->getContext()->getRequest()->setAttribute("icd_codes", $icd_codes);
 		$this->getContext()->getRequest()->setAttribute("client", $client);
 		
 		return View::SUCCESS;

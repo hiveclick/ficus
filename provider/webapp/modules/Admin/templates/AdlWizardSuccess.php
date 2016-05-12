@@ -14,23 +14,23 @@
 	<div class="modal-body">
 		<div class="help-block">Enter the details for this Activity of Daily Living (ADL)</div>
 		<div class="form-group">
-			<label class="control-label hidden-xs" for="name">Name</label>
+			<label class="control-label" for="name">Name</label>
 			<input type="text" id="name" name="name" class="form-control" placeholder="Enter adl's name" value="<?php echo $adl->getName() ?>" />
 		</div>
 
 		<div class="form-group">
-			<label class="control-label hidden-xs" for="name">Description</label>
+			<label class="control-label" for="name">Description</label>
 			<textarea id="description" name="description" class="form-control" placeholder="Enter a description for this ADL"><?php echo $adl->getDescription() ?></textarea>
 		</div>
 		
 		<div class="form-group">
-			<label class="control-label hidden-xs" for="name">Code</label>
+			<label class="control-label" for="name">Code</label>
 			<input type="text" id="code" name="code" class="form-control" placeholder="Enter adl code" readonly value="<?php echo $adl->getCode() ?>" />
 		</div>
 		
 		<div class="form-group">
             <div class="row">
-                <div class="col-md-8"><label class="control-label hidden-xs" for="adl_is_primary_1">Assign as ADL Type</label></div>
+                <div class="col-md-8"><label class="control-label" for="adl_is_primary_1">Assign as ADL Type</label></div>
                 <div class="col-md-4 text-right">
                     <input type="hidden" name="is_primary" value="0" />
                     <input type="checkbox" name="is_primary" value="1" id="adl_is_primary_1" <?php echo $adl->getIsPrimary() ? 'checked' : '' ?> />

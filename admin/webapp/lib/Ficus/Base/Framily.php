@@ -15,6 +15,7 @@ class Framily extends MongoForm {
     protected $notify_posts;
     protected $notify_caregiver;
     protected $notify_notes;
+    protected $is_emergency_contact;
     
     /**
      * Constructs new user
@@ -43,6 +44,27 @@ class Framily extends MongoForm {
     function setName($arg0) {
         $this->name = $arg0;
         $this->addModifiedColumn("name");
+        return $this;
+    }
+    
+    /**
+     * Returns the is_emergency_contact
+     * @return boolean
+     */
+    function getIsEmergencyContact() {
+        if (is_null($this->is_emergency_contact)) {
+            $this->is_emergency_contact = false;
+        }
+        return $this->is_emergency_contact;
+    }
+    
+    /**
+     * Sets the is_emergency_contact
+     * @var boolean
+     */
+    function setIsEmergencyContact($arg0) {
+        $this->is_emergency_contact = $arg0;
+        $this->addModifiedColumn("is_emergency_contact");
         return $this;
     }
     

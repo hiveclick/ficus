@@ -12,6 +12,7 @@ class Staff extends MongoForm {
     const STAFF_TYPE_ADMINISTRATOR = 1;
     const STAFF_TYPE_BILLING = 2;
     const STAFF_TYPE_GENERAL = 3;
+    const STAFF_TYPE_MANAGER = 4;
     
     protected $provider;
     
@@ -28,6 +29,10 @@ class Staff extends MongoForm {
     
     protected $mailing;
     protected $staff_type;
+    
+    protected $education;
+    protected $skills;
+    protected $notes;
         
     /**
      * Constructs new user
@@ -285,7 +290,68 @@ class Staff extends MongoForm {
         return $this;
     }
     
+    /**
+     * Returns the education
+     * @return string
+     */
+    function getEducation() {
+        if (is_null($this->education)) {
+            $this->education = "";
+        }
+        return $this->education;
+    }
     
+    /**
+     * Sets the education
+     * @var string
+     */
+    function setEducation($arg0) {
+        $this->education = $arg0;
+        $this->addModifiedColumn("education");
+        return $this;
+    }
+    
+    /**
+     * Returns the skills
+     * @return string
+     */
+    function getSkills() {
+        if (is_null($this->skills)) {
+            $this->skills = "";
+        }
+        return $this->skills;
+    }
+    
+    /**
+     * Sets the skills
+     * @var string
+     */
+    function setSkills($arg0) {
+        $this->skills = $arg0;
+        $this->addModifiedColumn("skills");
+        return $this;
+    }
+    
+    /**
+     * Returns the notes
+     * @return string
+     */
+    function getNotes() {
+        if (is_null($this->notes)) {
+            $this->notes = "";
+        }
+        return $this->notes;
+    }
+    
+    /**
+     * Sets the notes
+     * @var string
+     */
+    function setNotes($arg0) {
+        $this->notes = $arg0;
+        $this->addModifiedColumn("notes");
+        return $this;
+    }
     
     // +------------------------------------------------------------------------+
     // | HELPER METHODS															|

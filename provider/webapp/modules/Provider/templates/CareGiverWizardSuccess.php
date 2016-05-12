@@ -22,29 +22,29 @@
                 <div class="active tab-pane fade in" id="basic">
             		<div class="help-block">Manage a care giver with access to log into the system</div>
             		<div class="form-group">
-            			<label class="control-label hidden-xs" for="name">Name</label>
+            			<label class="control-label" for="name">Name</label>
             			<input type="text" id="name" name="name" class="form-control" placeholder="Enter care giver's name" value="<?php echo $care_giver->getName() ?>" />
             		</div>
             		
             		<hr />
             		
             		<div class="form-group">
-            			<label class="control-label hidden-xs" for="name">Mailing Address</label>
+            			<label class="control-label" for="name">Mailing Address</label>
             			<input type="text" id="address" name="mailing[address]" class="form-control" placeholder="Enter care giver's main address" value="<?php echo $care_giver->getMailing()->getAddress() ?>" />
             		</div>
             		
             		<div class="form-group">
                         <div class="row">
                             <div class="col-md-5">
-                                <label class="control-label hidden-xs" for="name">Mailing City</label>
+                                <label class="control-label" for="name">Mailing City</label>
                                 <input type="text" id="city" name="mailing[city]" class="form-control" placeholder="Enter care giver's mailing city" value="<?php echo $care_giver->getMailing()->getCity() ?>" />
                             </div>
                             <div class="col-md-3">
-                                <label class="control-label hidden-xs" for="name">Mailing State</label>
+                                <label class="control-label" for="name">Mailing State</label>
             			        <input type="text" id="state" name="mailing[state]" class="form-control" placeholder="Enter care giver's mailing state" value="<?php echo $care_giver->getMailing()->getState() ?>" />
                             </div>
                             <div class="col-md-4">
-                                <label class="control-label hidden-xs" for="name">Mailing Zip</label>
+                                <label class="control-label" for="name">Mailing Zip</label>
             			        <input type="text" id="postal_code" name="mailing[postal_code]" class="form-control" placeholder="Enter care giver's mailing zip code" value="<?php echo $care_giver->getMailing()->getPostalCode() ?>" />
                             </div>
                         </div>
@@ -53,30 +53,30 @@
             		<hr />
             		
             		<div class="form-group">
-            			<label class="control-label hidden-xs" for="name">Primary Email Address</label>
+            			<label class="control-label" for="name">Primary Email Address</label>
             			<input type="text" id="email" name="mailing[email]" class="form-control" placeholder="Enter care giver's main email address" value="<?php echo $care_giver->getMailing()->getEmail() ?>" />
             		</div>
             		
             		<div class="form-group">
-            			<label class="control-label hidden-xs" for="name">Primary Phone Number</label>
+            			<label class="control-label" for="name">Primary Phone Number</label>
             			<input type="text" id="phone" name="mailing[phone]" class="form-control" placeholder="Enter care giver's main phone number" value="<?php echo $care_giver->getMailing()->getPhone() ?>" />
             		</div>
             		
             		<hr />
             		
             		<div class="form-group">
-            			<label class="control-label hidden-xs" for="username">Username</label>
+            			<label class="control-label" for="username">Username</label>
             			<input type="text" id="username" name="username" class="form-control" placeholder="Enter care giver's username" value="<?php echo $care_giver->getUsername() ?>" />
             		</div>
             		
             		<div class="form-group">
-            			<label class="control-label hidden-xs" for="name">Password</label>
+            			<label class="control-label" for="name">Password</label>
             			<input type="text" id="password" name="password" class="form-control" placeholder="Enter care giver's password" value="<?php echo $care_giver->getPassword() ?>" />
             		</div>
             		
             		<div class="form-group">
                         <div class="row">
-                            <div class="col-md-8"><label class="control-label hidden-xs" for="status_1">Care Giver Status</label></div>
+                            <div class="col-md-8"><label class="control-label" for="status_1">Care Giver Status</label></div>
                             <div class="col-md-4 text-right">
                                 <input type="hidden" name="status" value="<?php echo \Ficus\CareGiver::STATUS_INACTIVE ?>" />
                                 <input type="checkbox" name="status" value="<?php echo \Ficus\CareGiver::STATUS_ACTIVE ?>" id="status_1" <?php echo $care_giver->getStatus() == \Ficus\CareGiver::STATUS_ACTIVE ? 'checked' : '' ?> />
@@ -87,15 +87,15 @@
         		<div class="tab-pane fade in" id="profile">
                     <div class="help-block">Provide a profile for this care giver to share their education, skills, and past history</div>
             		<div class="form-group">
-            			<label class="control-label hidden-xs" for="education">Education</label>
+            			<label class="control-label" for="education">Education</label>
             			<textarea id="education" name="education" class="form-control" placeholder="Enter education and certifications..."><?php echo $care_giver->getEducation() ?></textarea>
             		</div>
             		<div class="form-group">
-            			<label class="control-label hidden-xs" for="skills">Skills</label>
+            			<label class="control-label" for="skills">Skills</label>
             			<input type="text" name="skills" id="skills" placeholder="Enter specific skills and disciplines..." value="<?php echo implode(",", $care_giver->getSkills()) ?>" />
             		</div>
             		<div class="form-group">
-            			<label class="control-label hidden-xs" for="notes">Notes</label>
+            			<label class="control-label" for="notes">Notes</label>
             			<textarea id="notes" name="notes" class="form-control" placeholder="Enter any additional notes about this care giver..."><?php echo $care_giver->getNotes() ?></textarea>
             		</div>
         		</div>

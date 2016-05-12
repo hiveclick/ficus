@@ -5,9 +5,9 @@
 // | For the full copyright and license information, please view the LICENSE	|
 // | file that was distributed with this source code.						   |
 // +----------------------------------------------------------------------------+
-require_once(MO_MODULE_DIR . '/Default/views/IndexBlankView.php');
+require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'ClientIndexView.php');
 
-class ClientWizardSuccessView extends IndexBlankView
+class ClientWizardSuccessView extends ClientIndexView
 {
 
 	// +-----------------------------------------------------------------------+
@@ -23,6 +23,7 @@ class ClientWizardSuccessView extends IndexBlankView
 	{
 		parent::execute();
 		$this->setTitle('Add Client');
+		$this->setDecoratorTemplate("fullscreen.shell.php");
 	}
 
 }

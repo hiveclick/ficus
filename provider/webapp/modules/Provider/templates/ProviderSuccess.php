@@ -4,12 +4,11 @@
 ?>
 <!-- Content Header (Page header) -->
 <div class="content-header">
-	<h1>Manage Provider
-		<small>Providers have access to log into the system and manage care givers</small>
+	<h1>My Company Information
+		<small>Manage your company, its employees and other settings</small>
 	</h1>
 	<ol class="breadcrumb">
 		<li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="/provider/provider-search">Providers</a></li>
 		<li class="active"><?php echo $provider->getName() ?></li>
 	</ol>
 </div>

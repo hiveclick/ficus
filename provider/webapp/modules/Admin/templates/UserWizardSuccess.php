@@ -14,30 +14,30 @@
 	<div class="modal-body">
 		<div class="help-block">Manage a user with access to log into the system</div>
 		<div class="form-group">
-			<label class="control-label hidden-xs" for="name">Name</label>
+			<label class="control-label" for="name">Name</label>
 			<input type="text" id="name" name="name" class="form-control" placeholder="Enter user's name" value="<?php echo $user->getName() ?>" />
 		</div>
 
 		<div class="form-group">
-			<label class="control-label hidden-xs" for="name">Username</label>
+			<label class="control-label" for="name">Username</label>
 			<input type="text" id="username" name="username" class="form-control" placeholder="Enter username" value="<?php echo $user->getUsername() ?>" />
 		</div>
 		
 		<?php if (!\MongoId::isValid($user->getId())) { ?>
             <div class="form-group">
-                <label class="control-label hidden-xs" for="password">Password</label>
+                <label class="control-label" for="password">Password</label>
     			<input type="text" id="password" name="password" class="form-control" placeholder="Enter password" value="" />
             </div>
             
             <div class="form-group">
-                <label class="control-label hidden-xs" for="password2">Confirm Password</label>
+                <label class="control-label" for="password2">Confirm Password</label>
     			<input type="text" id="password2" name="password2" class="form-control" placeholder="Confirm password" value="" />
             </div>
 		<?php } ?>
 		
 		<div class="form-group">
             <div class="row">
-                <div class="col-md-8"><label class="control-label hidden-xs" for="status_1">User Status</label></div>
+                <div class="col-md-8"><label class="control-label" for="status_1">User Status</label></div>
                 <div class="col-md-4 text-right">
                     <input type="hidden" name="status" value="<?php echo \Ficus\User::USER_STATUS_INACTIVE ?>" />
                     <input type="checkbox" name="status" value="<?php echo \Ficus\User::USER_STATUS_ACTIVE ?>" id="status_1" <?php echo $user->isActive() ? 'checked' : '' ?> />

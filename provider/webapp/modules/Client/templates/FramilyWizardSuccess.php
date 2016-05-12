@@ -21,34 +21,34 @@
 	<div class="modal-body">
 		<div class="help-block">Manage a friend or family member with access to log into the family portal</div>
 		<div class="form-group">
-			<label class="control-label hidden-xs" for="name">Name</label>
+			<label class="control-label" for="name">Name</label>
 			<input type="text" id="name" name="name" class="form-control" placeholder="Enter name" value="<?php echo $framily->getName() ?>" />
 		</div>
 		
 		<div class="form-group">
-			<label class="control-label hidden-xs" for="name">Relationship</label>
+			<label class="control-label" for="name">Relationship</label>
 			<input type="text" id="relationship" name="relationship" class="form-control" placeholder="Enter relationship (spouse, son, daughter, grandchild, neighbor...)" value="<?php echo $framily->getRelationship() ?>" />
 		</div>
 		
 		<hr />
 		
 		<div class="form-group">
-			<label class="control-label hidden-xs" for="address">Address</label>
+			<label class="control-label" for="address">Address</label>
 			<input type="text" id="address" name="mailing[address]" class="form-control" placeholder="Enter home address" value="<?php echo $framily->getMailing()->getAddress() ?>" />
 		</div>
 		
 		<div class="form-group">
 			<div class="row">
                 <div class="col-md-5">
-                    <label class="control-label hidden-xs" for="address">City</label>
+                    <label class="control-label" for="address">City</label>
                     <input type="text" id="city" name="mailing[city]" class="form-control" placeholder="Enter city" value="<?php echo $framily->getMailing()->getCity() ?>" />
                 </div>
                 <div class="col-md-3">
-                    <label class="control-label hidden-xs" for="state">State</label>
+                    <label class="control-label" for="state">State</label>
                     <input type="text" id="state" name="mailing[state]" class="form-control" placeholder="Enter state" value="<?php echo $framily->getMailing()->getState() ?>" />
                 </div>
                 <div class="col-md-4">
-                    <label class="control-label hidden-xs" for="postal_code">Zip</label>
+                    <label class="control-label" for="postal_code">Zip</label>
                     <input type="text" id="postal_code" name="mailing[postal_code]" class="form-control" placeholder="Enter zip" value="<?php echo $framily->getMailing()->getPostalCode() ?>" />
                 </div>
 			</div>
@@ -57,12 +57,12 @@
 		<hr />
 
 		<div class="form-group">
-			<label class="control-label hidden-xs" for="email">Email</label>
+			<label class="control-label" for="email">Email</label>
 			<input type="text" id="email" name="mailing[email]" class="form-control" placeholder="Enter email address" value="<?php echo $framily->getMailing()->getEmail() ?>" />
 		</div>
 		
 		<div class="form-group">
-			<label class="control-label hidden-xs" for="phone">Phone</label>
+			<label class="control-label" for="phone">Phone</label>
 			<input type="text" id="phone" name="mailing[phone]" class="form-control" placeholder="Enter phone number" value="<?php echo $framily->getMailing()->getPhone() ?>" />
 		</div>
 		
@@ -71,7 +71,7 @@
 		<div class="form-group">
             <div class="row">
                 <div class="col-md-6">
-                    <label class="control-label hidden-xs" for="authorization_approved">Grant Authorization to view patient records</label>
+                    <label class="control-label" for="authorization_approved">Grant Authorization to view patient records</label>
                 </div>
                 <div class="col-md-6 text-right">
         			<input type="hidden" name="authorization_approved" id="authorization_approved_0" name="authorization_approved" value="0" />
