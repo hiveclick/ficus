@@ -1,0 +1,105 @@
+@CHARSET "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700,300);
+$font-family-base: 'Raleway', sans-serif;
+
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "../../bower_components/font-awesome/scss/font-awesome.scss";
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+.input-group .selectize-input:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group .selectize-input:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.crumbs {
+  text-align: left;
+  width: 100%;
+  padding-left: 430px;
+  margin: -78px 0px 0px 0px;
+}
+
+.crumbs div.row {
+  margin-left: 0px;
+  padding-left: 0px;
+}
+.crumbs div.row div {
+  background: #3498db;
+}
+
+.crumbs div.row div {
+  display: block;
+  float: left;
+  height: 78px;
+  background: #3498db;
+  text-align: center;
+  padding: 30px 40px 0 80px;
+  position: relative;
+  margin: 0 3px 0 0;
+
+  font-size: 20px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.crumbs div.row div a {
+  color: #fff;
+}
+
+.crumbs div.row div:after {
+  content: "";
+  border-top: 40px solid transparent;
+  border-bottom: 40px solid transparent;
+  border-left: 40px solid #3498db;
+  position: absolute;
+  right: -40px;
+  top: 0;
+  z-index: 1;
+}
+
+.crumbs div.row div:before {
+  content: "";
+  border-top: 40px solid transparent;
+  border-bottom: 40px solid transparent;
+  border-left: 40px solid #ecf0f5;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.crumbs div.row div:first-child {
+  /*
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  */
+}
+.crumbs div.row div:first-child:before {
+  display: none;
+}
+
+.crumbs div.row div:last-child {
+  margin: 0 -30px 0 0;
+  /*
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  */
+}
+.crumbs div.row div:last-child:after {
+  display: none;
+}
+
+.crumbs div.row div.active {
+  background: #367fa9;
+}
+.crumbs div.row div.active:after {
+  border-left-color: #367fa9;
+}

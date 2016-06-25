@@ -26,7 +26,7 @@ try {
     
     // Start Output
     if (!$is_silent) {
-        echo StringTools::consoleColor('Flux Installation Script', StringTools::CONSOLE_COLOR_GREEN) . "\n";
+        echo StringTools::consoleColor('Ficus Installation Script', StringTools::CONSOLE_COLOR_GREEN) . "\n";
         echo StringTools::consoleColor(str_repeat('=', 50), StringTools::CONSOLE_COLOR_GREEN) . "\n";
         
         echo 'Configuring your application';
@@ -40,7 +40,22 @@ try {
         throw new Exception('We cannot find the config.ini settings file.  Please create one with your settings in it before continuing.  You can use the config.ini.sample as a reference.');
     }
     if (!$is_silent) { StringTools::consoleWrite(' - loading settings', 'Loaded', StringTools::CONSOLE_COLOR_GREEN, true); }
-    
+
+    // +------------------------------------------------------------------------+
+    // | Update bower, composer and npm for dependencies                        |
+    // +------------------------------------------------------------------------+
+    if (!$is_silent) { StringTools::consoleWrite(' - updating dependencies', 'Updating', StringTools::CONSOLE_COLOR_YELLOW); }
+    $cmd = 'composer update --quiet -d ' . $admin_base_dir . 'webapp/lib/';
+    shell_exec($cmd);
+    if (!$is_silent) { StringTools::consoleWrite(' - updating dependencies', 'Updated', StringTools::CONSOLE_COLOR_GREEN, true); }
+
+    // Push patch to Zend/Http/Client.php until official ZF repo is updated - 06/23/16
+    if (!$is_silent) { StringTools::consoleWrite(' - applying patches', 'Applying', StringTools::CONSOLE_COLOR_YELLOW); }
+    $zend_client_contents = file_get_contents($init_dir . "/config/Client.php");
+    file_put_contents($admin_base_dir . "webapp/lib/vendor/zendframework/zend-http/src/Client.php", $zend_client_contents);
+
+    if (!$is_silent) { StringTools::consoleWrite(' - applying patches', 'Applied Successfully', StringTools::CONSOLE_COLOR_GREEN, true); }
+
     // +------------------------------------------------------------------------+
     // | Setup the DAO modules and any other links that need to be setup        |
     // +------------------------------------------------------------------------+
