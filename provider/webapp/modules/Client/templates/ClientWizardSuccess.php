@@ -332,6 +332,12 @@ $(document).ready(function() {
 
     $('#icd').selectize();
 
+	$('#ssn').mask('000-00-0000');
+
+	$('#dob').mask('00/00/0000');
+
+	$('#phone,#mobile,#emergency_contact_phone').mask('(000) 000-0000');
+
     $('.dob_datepicker').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true,

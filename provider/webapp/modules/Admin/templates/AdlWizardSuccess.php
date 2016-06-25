@@ -29,13 +29,13 @@
 		</div>
 		
 		<div class="form-group">
-            <div class="row">
-                <div class="col-md-8"><label class="control-label" for="adl_is_primary_1">Assign as ADL Type</label></div>
-                <div class="col-md-4 text-right">
-                    <input type="hidden" name="is_primary" value="0" />
-                    <input type="checkbox" name="is_primary" value="1" id="adl_is_primary_1" <?php echo $adl->getIsPrimary() ? 'checked' : '' ?> />
-                </div>
-            </div>
+			<div class="row">
+				<div class="col-md-8"><label class="control-label" for="adl_is_primary_1">Assign as ADL Type</label></div>
+				<div class="col-md-4 text-right">
+					<input type="hidden" name="is_primary" value="0" />
+					<input type="checkbox" name="is_primary" value="1" id="adl_is_primary_1" <?php echo $adl->getIsPrimary() ? 'checked' : '' ?> />
+				</div>
+			</div>
 		</div>
 
 	</div>
@@ -51,10 +51,10 @@
 //<!--
 $(document).ready(function() {
 	 $('#adl_is_primary_1').bootstrapSwitch({
-	        size: 'small',
-	        onText: 'primary',
-	        offText: 'intermediate'
-	    });
+			size: 'small',
+			onText: 'primary',
+			offText: 'intermediate'
+		});
 	
 	$('#adl_form_<?php echo $adl->getId() ?>').form(function(data) {
 		$.rad.notify('ADL Updated', 'The adl has been added/updated in the system');

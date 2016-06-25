@@ -71,7 +71,7 @@ $(document).ready(function() {
 		}}
 	];
 
-	slick_grid = $('#adl-grid').slickGrid({
+	$('#adl-grid').slickGrid({
   		pager: $('#adl-pager'),
   		form: $('#adl_search_form'),
   		columns: columns,

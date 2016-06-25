@@ -13,5 +13,4 @@ class Adl extends Base\Adl {
         }
         return parent::queryAll($criteria, $fields, $hydrate, $timeout);
     }
-    
 }

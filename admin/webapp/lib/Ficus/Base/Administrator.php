@@ -14,6 +14,7 @@ class Administrator extends MongoForm {
     protected $status;
     protected $timezone;
     protected $image_data;
+    protected $profile_image_url;
     protected $token;
     
     /**
@@ -102,6 +103,26 @@ class Administrator extends MongoForm {
         $this->password = $arg0;
         $this->addModifiedColumn('password');
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProfileImageUrl()
+    {
+        if (is_null($this->profile_image_url)) {
+            $this->profile_image_url = "";
+        }
+        return $this->profile_image_url;
+    }
+
+    /**
+     * @param mixed $profile_image_url
+     */
+    public function setProfileImageUrl($profile_image_url)
+    {
+        $this->profile_image_url = $profile_image_url;
+        $this->addModifiedColumn("profile_image_url");
     }
     
     /**

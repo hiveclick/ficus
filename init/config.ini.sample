@@ -2,14 +2,11 @@
 ; This is the default configuration file for installing rad.  Whenever you make
 ; a change to this file, you need to run the install.sh script
 ;
-; /home/flux/init/install.sh
+; /home/ficus/init/install.sh
 ;
 
 ; Set the API server for accessing the platform
 api_server=http://localhost
-
-; Set the url to use for realtime link building
-realtime_url=http://www.fluxrt.local
 
 ; Set your database user credentials here
 db_host=localhost

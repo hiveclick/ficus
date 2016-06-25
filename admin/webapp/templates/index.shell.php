@@ -10,93 +10,11 @@
             <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
-        <!-- JQuery Plugins -->
-    	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    	<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
-    	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-        
-        <!-- Bootstrap base classes -->
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
-        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        
-        <!-- Font Awesome icons -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	    <!-- JQuery Plugins -->
+	    <script src="/js/main.min.js"></script>
 
-        <!-- Datatables plugins for table sorting and filtering 
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/colvis/1.1.0/css/dataTables.colVis.css"">
-        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
-        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-        <script type="text/javascript" charset="utf8" src="/js/datatables/dataTables.colReorder.js"></script>
-        <script type="text/javascript" charset="utf8" src="/js/datatables/dataTables.pageCache.js"></script>
-        -->
-        <!-- <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/colvis/1.1.0/js/dataTables.colVis.min.js"></script> -->
-
-        <!-- Cookie plugin for storing column information in slickgrid -->
-        <script src="/js/jquery.cookie.js" type="text/javascript" ></script>
-        
-        <!-- RAD plugins used for ajax requests, notifications, and form submission -->
-        <link href="/js/pnotify/pnotify.custom.min.css" rel="stylesheet" type="text/css" />
-        <script src="/js/pnotify/pnotify.custom.min.js" type="text/javascript" ></script>
-        <script src="/js/rad/jquery.rad.js" type="text/javascript"></script>
-        
-		<!-- Slick Grid plugins -->
-		<script type="text/javascript" src="/js/slick-grid-1.4/lib/jquery.event.drag.min.2.0.js"></script>
-		<script type="text/javascript" src="/js/slick-grid-1.4/slick.model.rad.js"></script>
-		<script type="text/javascript" src="/js/slick-grid-1.4/slick.pager.rad.js"></script>
-		<script type="text/javascript" src="/js/slick-grid-1.4/slick.columnpicker.rad.js"></script>
-		<script type="text/javascript" src="/js/slick-grid-1.4/slick.grid.rad.js"></script>
-		<script type="text/javascript" src="/js/slick-grid-1.4/jquery.slickgrid.rad.js"></script>
-		<link rel="stylesheet" href="/js/slick-grid-1.4/css/slick.columnpicker.css"></link>
-		<link rel="stylesheet" href="/js/slick-grid-1.4/css/slick.pager.css"></link>
-		<link rel="stylesheet" href="/js/slick-grid-1.4/css/slick.ui.css"></link>
-		<link rel="stylesheet" href="/js/slick-grid-1.4/css/slick.grid.css"></link>
-        
-        <!-- Bootstrap color picker -->
-        <link href="/js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css" />
-        <script src="/js/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js" type="text/javascript" ></script>
-        
-        <!-- Selectize plugin for select boxes and comma-delimited fields -->
-        <link href="/js/selectize/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css" />
-        <script src="/js/selectize/js/standalone/selectize.min.js" type="text/javascript"></script>
-
-        <!-- Bootstrap dropdown plugin -->
-		<script src="/js/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
-        
-        <!-- Moment plugin for formatting dates -->
-        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-        
-        <!-- Bootstrap switch for checkboxes and radiobuttons -->
-        <link href="/js/bootstrap-switch/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
-        <script src="/js/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript" ></script>
-        
-        <!-- Include Date Range Picker -->
-		<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-
-        <!-- Number format plugin for formatting currency and numbers -->
-        <script src="/js/jquery.number.min.js" type="text/javascript" ></script>
-        
-        
-        <!-- Number format plugin for formatting currency and numbers -->
-        <!-- 
-        <script src="/js/jshashtable-2.1.js" type="text/javascript" ></script>
-        <script src="/js/jquery.numberformatter-1.2.1.js" type="text/javascript" ></script>
-         -->
-        
-        <!-- Smart resize plugin used for chart redrawing -->
-        <script src="/js/jquery.smartresize.js" type="text/javascript" ></script>
-
-        <!-- Timers used for firing events -->
-        <!-- 
-        <script src="/js/timers/jquery.timers-1.2.js" type="text/javascript" ></script>
-        -->
-        
-        <!-- Default site css -->
-        <link href="/css/AdminLTE.css" rel="stylesheet">
-        
-        <link href="/css/skins/skin-blue.css" rel="stylesheet">
-        <link href="/css/skins/_all-skins.css" rel="stylesheet">
+	    <!-- Default site css -->
+	    <link href="/css/main.min.css" rel="stylesheet">
     </head>
     <body class="skin-blue" data-spy="scroll" data-target="#scrollspy">
 		<div class="wrapper">

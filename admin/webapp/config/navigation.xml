@@ -114,6 +114,12 @@
                 <class>nav-secondary</class>
                 <permission>1</permission>
             </carriers>
+            <forms>
+                <label>Forms</label>
+                <uri>/admin/form-search</uri>
+                <class>nav-secondary</class>
+                <permission>1</permission>
+            </forms>
             <spacer>
 				<label></label>
 				<uri></uri>>

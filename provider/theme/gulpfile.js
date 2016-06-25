@@ -30,8 +30,12 @@ gulp.task('bower', function() {
 // Save the icons for font-awesome
 gulp.task('icons', function() {
 	gutil.log("\n  Saving FA Fonts...");
-    return gulp.src(config.bowerDir + '/font-awesome/fonts/**.*')
+    gulp.src(config.bowerDir + '/font-awesome/fonts/**.*')
         .pipe(gulp.dest(config.destDir + '/fonts'));
+
+	gutil.log("\n  Saving Bootstrap Fonts...");
+	gulp.src(config.bowerDir + '/bootstrap-sass/assets/fonts/bootstrap/**.*')
+		.pipe(gulp.dest(config.destDir + '/fonts/bootstrap'));
 });
 
 // Compile the javascript files

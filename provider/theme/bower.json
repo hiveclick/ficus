@@ -21,6 +21,7 @@
     "jquery-smartresize": "*",
     "font-awesome": "^4.6.2",
     "bootstrap-daterangepicker": "^2.1.19",
-    "selectize": "^0.12.1"
+    "selectize": "^0.12.1",
+    "jquery-mask-plugin": "^1.14.0"
   }
 }

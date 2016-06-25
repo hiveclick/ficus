@@ -6,7 +6,17 @@ $font-family-base: 'Raleway', sans-serif;
 @import "../../bower_components/font-awesome/scss/font-awesome.scss";
 
 .vcenter {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+.input-group .selectize-input:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group .selectize-input:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
