@@ -62,3 +62,13 @@ family/webapp/config/databases.ini
 family/webapp/config/factories.ini
 family/webapp/config/logging.ini
 family/webapp/config/settings.ini
+
+# bower and npm files
+admin/theme/bower_components
+admin/theme/node_modules
+provider/theme/bower_components
+provider/theme/node_modules
+care/theme/bower_components
+care/theme/node_modules
+family/theme/bower_components
+family/theme/node_modules
